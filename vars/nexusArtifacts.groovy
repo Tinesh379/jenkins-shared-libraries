@@ -1,11 +1,13 @@
 def call(Map config = [:]) {
 
-    def pom = readMavenPom file: 'pom.xml'
+    pom = readMavenPom file: 'pom.xml'
+    filesByGlob = findFiles excludes: '', glob: 'target/*.${pom.packaging}'
+    artifactPath= filesByGlob[0].path
 
     nexusArtifactUploader artifacts: 
     [[artifactId: 'pom.artifactId', 
     classifier: '', 
-    file: 'target/${pom.artficatId}.${pom.packaging}',
+    file: artifactPath,
     type: 'pom.packaging']], 
     credentialsId: 'nexus', 
     groupId: 'pom.groupId', 
