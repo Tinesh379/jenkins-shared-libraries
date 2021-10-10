@@ -20,7 +20,7 @@ def call(Map config = [:]) {
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: config.repository,
-                            credentialsId: NEXUS_CREDENTIAL_ID,
+                            credentialsId: "nexus",
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
                                 [artifactId: pom.artifactId,
