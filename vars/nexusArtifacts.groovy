@@ -1,7 +1,7 @@
 def call(Map config = [:]) {
 
     pom = readMavenPom file: 'pom.xml'
-    filesByGlob = findFiles excludes: '', glob: 'target/*.${pom.packaging}'
+    filesByGlob = findFiles  glob: 'target/*.${pom.packaging}'
     artifactPath = filesByGlob[0].path
 
     nexusArtifactUploader artifacts: 
@@ -11,8 +11,8 @@ def call(Map config = [:]) {
     type: 'pom.packaging']], 
     credentialsId: 'nexus', 
     groupId: 'pom.groupId', 
-    nexusUrl: '192.168.1.101:8081', 
-    nexusVersion: 'nexus3', 
+    nexusUrl: 'localhost:8081', 
+    nexusVersion: 'nexus3',
     protocol: 'http', 
     repository: config.repository, 
     version: 'pom.version'
