@@ -14,4 +14,5 @@ def call(Map config = [:]) {
     bat "echo 'Building the Code Now'"
     bat "mvn clean package"
              
+   }
 }
